@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- title -->
+    <title>Login</title>
+
+    <!-- fav icon -->
+    <link rel="shortcut icon" href="assets/icons8-homepage-64.png" type="image/x-icon">
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- tailwind CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- daisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- font awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="mt-10 flex justify-center items-center flex-col">
+        <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-5 shadow">
+
+            <section class="text-center mb-2.5 space-y-2.5">
+                <div class="">
+                    <img class="mx-auto" src="assets/github-logo.png" alt="">
+                </div>
+                <h3 class="text-2xl font-bold">GitHub Issues Tracker</h3>
+                <p class="text-[16px]">Sign in to manage your issues</p>
+            </section>
+
+            <label class="label">Username</label>
+            <input type="name" class="input" placeholder="Enter Username"/>
+
+            <label class="label">Password</label>
+            <input type="password" class="input" placeholder="Password"/>
+
+            <button class="btn btn-primary mt-4">Login</button>
+        </fieldset>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
