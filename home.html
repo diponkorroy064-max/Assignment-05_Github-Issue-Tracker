@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- title -->
+    <title>Github-Issue-Tracker</title>
+
+    <!-- fav icon -->
+    <link rel="shortcut icon" href="assets/icons8-github-32.png" type="image/x-icon">
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- tailwind CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- daisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- font awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+
+</head>
+
+<body class="bg-gray-200">
+
+    <!-- header section -->
+    <header class="flex justify-between items-center py-5 border border-[#E9E9E9] bg-[#FFFFFF] px-10 shadow">
+        <div>
+            <span><i class="fa-brands fa-github text-2xl"></i></span>
+            <span class="text-[#1F2937] font-bold text-2xl">GitHub Issues Tracker</span>
+        </div>
+
+        <div class="flex gap-5">
+            <label class="input">
+                <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                        stroke="currentColor">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                    </g>
+                </svg>
+
+                <input type="search" required placeholder="Search issues..." />
+            </label>
+
+            <button class="btn btn-primary">+ New Issue</button>
+        </div>
+    </header>
+
+
+    <!-- main section -->
+    <main class="pb-[60px]">
+
+        <!-- button section -->
+        <section id=""
+            class="w-[90vw] mx-auto bg-[#FFFFFF] border border-gray-200 rounded-md p-6 shadow mt-[60px] flex gap-2.5">
+            <button onclick="active()" class="btn btn-outline">All</button>
+            <button onclick="active()" class="btn btn-outline">Open</button>
+            <button onclick="active()" class="btn btn-outline">Closed</button>
+        </section>
+
+        <!-- issue section -->
+        <section id=""
+            class="w-[90vw] mx-auto bg-[#FFFFFF] border border-gray-200 rounded-md p-6 shadow mt-8">
+
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <div class="bg-[#ECE4FF] p-2 rounded-full">
+                        <img src="assets/Aperture.png" alt="">
+                    </div>
+
+                    <div>
+                        <h2 class="text-[20px] text-[#1F2937] font-semibold">50 Issues</h2>
+                        <p class="text-[#64748B] text-[16px]">Track and manage your project issues</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-10">
+                    <span><i class="fa-solid fa-circle" style="color: green;"></i> Open</span>
+                    <span><i class="fa-solid fa-circle" style="color: green;"></i> Closed</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- all cards -->
+        <section id="card_container" class="bg-[#FBFBFB] rounded-md w-[90vw] mt-2 mx-auto grid md:grid-cols-4 grid-cols-1 gap-5 p-5">
+
+        </section>
+
+    </main>
+
+<script src="file.js"></script>
+</body>
+
+</html>
