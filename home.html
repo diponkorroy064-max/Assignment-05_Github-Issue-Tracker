@@ -67,17 +67,17 @@
     <main class="pb-[60px]">
 
         <!--Tab button section -->
-        <section id="all_btns"
-            class="w-[90vw] mx-auto bg-[#FFFFFF] border border-gray-200 rounded-md p-6 shadow mt-[60px] flex gap-2.5">
-            <button onclick="selectedIssue()" class="btn btn-outline tab-btns">All</button>
+        <section id="all_btns" class="w-[90vw] mx-auto bg-[#FFFFFF] border border-gray-200 rounded-md p-6 shadow mt-[60px] flex gap-8">
+            <button id="all-btn" class="btn btn-outline tab-btns">All</button>
 
-            <button onclick="selectedIssue()" class="btn btn-outline tab-btns">Open</button>
+            <button id="open-btn" class="btn btn-outline tab-btns">Open</button>
 
-            <button onclick="selectedIssue()" class="btn btn-outline tab-btns">Closed</button>
+            <button id="closed-btn" class="btn btn-outline tab-btns">Closed</button>
             
         </section>
 
-        <!-- issue section -->
+
+        <!-- issue (Tab) section -->
         <section id=""
             class="w-[90vw] mx-auto bg-[#FFFFFF] border border-gray-200 rounded-md p-6 shadow mt-8">
 
@@ -95,14 +95,15 @@
 
                 <div class="flex gap-10">
                     <span><i class="fa-solid fa-circle" style="color: green;"></i> Open</span>
-                    <span><i class="fa-solid fa-circle" style="color: green;"></i> Closed</span>
+                    <span><i class="fa-solid fa-circle" style="color: rgb(16, 16, 214);"></i> Closed</span>
                 </div>
 
             </div>
 
         </section>
 
-        <!-- all cards -->
+
+        <!-- all cards showing section -->
         <section id="card_container" class="bg-[#FBFBFB] rounded-md w-[90vw] mt-2 mx-auto grid md:grid-cols-4 grid-cols-1 gap-5 p-5">
 
         </section>
@@ -110,8 +111,6 @@
 
         <!-- modal section -->
         <!-- Open the modal using ID.showModal() method -->
-        <!-- <button class="btn" onclick="my_modal.showModal()">open modal</button> -->
-
         <dialog id="my_modal" class="modal modal-middle">
             <div class="modal-box">
                 <div id="modal_container" class="space-y-2">
@@ -136,3 +135,5 @@
 </body>
 
 </html>
+
+

@@ -1,8 +1,7 @@
-// get the id  of modal---
-// const modal = document.getElementById('my_modal');
+
 
 // loading all card documents---
-const loadAllIssues = fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+const loadAllIssues = () => fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     .then((res) => res.json())
     .then((issues) => displayAllIssues(issues.data));
 
@@ -14,14 +13,14 @@ const displayAllIssues = (allData) => {
     const cardContainer = document.getElementById('card_container');
 
 
-    // display labels array--
+    // display labels array---
     const createElement = (arr) => {
         const htmlElements = arr.map((el) => `<span class="badge badge-outline badge-warning">${el}</span>`);
         // console.log(htmlElements);
-        
+
         return htmlElements.join("");
     };
-    
+
 
     allData.forEach(data => {
         // console.log(data);
@@ -29,7 +28,7 @@ const displayAllIssues = (allData) => {
 
         const card = document.createElement('div');
         // display border top color---
-        if (data.status=="open") {
+        if (data.status == "open") {
             // console.log("dipjol");
             card.className = "bg-white rounded-md shadow p-4 space-y-5 border-t-3 border-t-green-500";
         }
@@ -37,7 +36,7 @@ const displayAllIssues = (allData) => {
             card.className = "bg-white rounded-md shadow p-4 space-y-5 border-t-3 border-t-blue-500";
         }
 
-        // showing the modal ---
+        // showing the modal---
         card.onclick = () => loadModal(data.id);
         // console.log(data.id);
 
@@ -62,10 +61,11 @@ const displayAllIssues = (allData) => {
             </div>
         `;
         cardContainer.appendChild(card);
-
     });
-
 }
+
+
+// loadAllIssues();
 
 
 // load all modal issues----
@@ -75,16 +75,17 @@ const loadModal = async (issueId) => {
 
     const singleIssue = await res.json();
     // console.log(singleIssue);
-    
+
     displayModal(singleIssue.data);
 
     my_modal.showModal(issueId);
 };
 
 
+
 // display all modal issues---
 const displayModal = (issue) => {
-    console.log(issue);
+    // console.log(issue);
 
     // display labels array---
     const createElement = (arr) => {
@@ -96,7 +97,7 @@ const displayModal = (issue) => {
 
     const modalContainer = document.getElementById('modal_container');
     modalContainer.innerHTML = `
-        <h2 class="font-bold text-2xl">${issue.title}</h2>
+        <h2 class="font-bold text-[20px]">${issue.title}</h2>
         <div>
             <span class="badge badge-success">${issue.status}</span>
             <span>${issue.author}</span>
@@ -123,10 +124,58 @@ const displayModal = (issue) => {
 
 
 
+document.getElementById('all_btns').addEventListener('click', (event) => {
+    const allBtn = document.getElementById('all-btn');
+    const openBtn = document.getElementById('open-btn');
+    const closedBtn = document.getElementById('closed-btn');
+
+    if (event.target == allBtn) {
+        allBtn.classList.add('btn-primary');
+        allBtn.classList.remove('btn-outline');
+
+        openBtn.classList.remove('btn-primary');
+        openBtn.classList.add('btn-outline');
+
+        closedBtn.classList.remove('btn-primary');
+        closedBtn.classList.add('btn-outline');
+
+        loadAllIssues();
+        return;
+    }
+    else if (event.target == openBtn) {
+        openBtn.classList.add('btn-primary');
+        openBtn.classList.remove('btn-outline');
+
+        allBtn.classList.remove('btn-primary');
+        allBtn.classList.add('btn-outline');
+
+        closedBtn.classList.remove('btn-primary');
+        closedBtn.classList.add('btn-outline');
+
+        openStatus();
+        return;
+
+
+    }
+
+    else if (event.target == closedBtn) {
+        closedBtn.classList.add('btn-primary');
+        closedBtn.classList.remove('btn-outline');
+
+        allBtn.classList.remove('btn-primary');
+        allBtn.classList.add('btn-outline');
+
+        openBtn.classList.remove('btn-primary');
+        openBtn.classList.add('btn-outline');
+    }
+
+})
 
 
 
 
+
+loadAllIssues();
 
 
 
