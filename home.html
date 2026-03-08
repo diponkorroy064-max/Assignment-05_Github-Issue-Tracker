@@ -39,7 +39,7 @@
 <body class="bg-gray-200">
 
     <!-- header section -->
-    <header class="flex justify-between items-center py-5 border border-[#E9E9E9] bg-[#FFFFFF] px-10 shadow">
+    <header class="flex justify-between items-center py-5 border border-[#E9E9E9] bg-[#FFFFFF] px-10 shadow flex-wrap gap-4">
         <div>
             <span><i class="fa-brands fa-github text-2xl"></i></span>
             <span class="text-[#1F2937] font-bold text-2xl">GitHub Issues Tracker</span>
@@ -66,19 +66,22 @@
     <!-- main section -->
     <main class="pb-[60px]">
 
-        <!-- button section -->
-        <section id=""
+        <!--Tab button section -->
+        <section id="all_btns"
             class="w-[90vw] mx-auto bg-[#FFFFFF] border border-gray-200 rounded-md p-6 shadow mt-[60px] flex gap-2.5">
-            <button onclick="active()" class="btn btn-outline">All</button>
-            <button onclick="active()" class="btn btn-outline">Open</button>
-            <button onclick="active()" class="btn btn-outline">Closed</button>
+            <button onclick="selectedIssue()" class="btn btn-outline tab-btns">All</button>
+
+            <button onclick="selectedIssue()" class="btn btn-outline tab-btns">Open</button>
+
+            <button onclick="selectedIssue()" class="btn btn-outline tab-btns">Closed</button>
+            
         </section>
 
         <!-- issue section -->
         <section id=""
             class="w-[90vw] mx-auto bg-[#FFFFFF] border border-gray-200 rounded-md p-6 shadow mt-8">
 
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center flex-wrap gap-6">
                 <div class="flex items-center gap-2">
                     <div class="bg-[#ECE4FF] p-2 rounded-full">
                         <img src="assets/Aperture.png" alt="">
@@ -104,9 +107,32 @@
 
         </section>
 
+
+        <!-- modal section -->
+        <!-- Open the modal using ID.showModal() method -->
+        <!-- <button class="btn" onclick="my_modal.showModal()">open modal</button> -->
+
+        <dialog id="my_modal" class="modal modal-middle">
+            <div class="modal-box">
+                <div id="modal_container" class="space-y-2">
+                    
+                </div>
+
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn btn-primary">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+
     </main>
 
-<script src="file.js"></script>
+
+    
+
+<script src="home.js"></script>
 </body>
 
 </html>
