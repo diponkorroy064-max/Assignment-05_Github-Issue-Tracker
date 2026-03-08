@@ -1,5 +1,6 @@
 
 
+
 // loading all card documents---
 const loadAllIssues = () => fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     .then((res) => res.json())
@@ -7,11 +8,12 @@ const loadAllIssues = () => fetch("https://phi-lab-server.vercel.app/api/v1/lab/
 
 
 
+const cardContainer = document.getElementById('card_container');
 // display all cards---
 const displayAllIssues = (allData) => {
     // console.log(allData);
-    const cardContainer = document.getElementById('card_container');
-
+    
+    cardContainer.innerHTML = "";
 
     // display labels array---
     const createElement = (arr) => {
@@ -65,7 +67,7 @@ const displayAllIssues = (allData) => {
 }
 
 
-// loadAllIssues();
+loadAllIssues();
 
 
 // load all modal issues----
@@ -98,10 +100,10 @@ const displayModal = (issue) => {
     const modalContainer = document.getElementById('modal_container');
     modalContainer.innerHTML = `
         <h2 class="font-bold text-[20px]">${issue.title}</h2>
-        <div>
+        <div class="flex gap-6">
             <span class="badge badge-success">${issue.status}</span>
             <span>${issue.author}</span>
-            <span>${issue.updatedAt}</span>
+            <span>${new Date(issue.updatedAt).toLocaleDateString("en-US")}</span>
         </div>
             
         <div class="flex gap-2">${createElement(issue.labels)}</div>
@@ -125,11 +127,16 @@ const displayModal = (issue) => {
 
 
 document.getElementById('all_btns').addEventListener('click', (event) => {
-    const allBtn = document.getElementById('all-btn');
-    const openBtn = document.getElementById('open-btn');
-    const closedBtn = document.getElementById('closed-btn');
+    const allBtn = document.getElementById('all_btn');
+    const openBtn = document.getElementById('open_btn');
+    const closedBtn = document.getElementById('closed_btn');
 
-    if (event.target == allBtn) {
+    const count = document.getElementById('count_cards');
+
+    if (event.target.classList.contains('all-btns')) {
+        // count.innerText = "";
+        count.innerText = cardContainer.children.length;
+
         allBtn.classList.add('btn-primary');
         allBtn.classList.remove('btn-outline');
 
@@ -142,7 +149,10 @@ document.getElementById('all_btns').addEventListener('click', (event) => {
         loadAllIssues();
         return;
     }
-    else if (event.target == openBtn) {
+    else if (event.target.classList.contains('open-btns')) {
+        // count.innerText = "";
+        count.innerText = cardContainer.children.length;
+
         openBtn.classList.add('btn-primary');
         openBtn.classList.remove('btn-outline');
 
@@ -152,13 +162,15 @@ document.getElementById('all_btns').addEventListener('click', (event) => {
         closedBtn.classList.remove('btn-primary');
         closedBtn.classList.add('btn-outline');
 
-        openStatus();
+        
+
+        loadOpenStatus();
         return;
-
-
     }
+    else if (event.target.classList.contains('closed-btns')) {
+        // count.innerText = "";
+        count.innerText = cardContainer.children.length;
 
-    else if (event.target == closedBtn) {
         closedBtn.classList.add('btn-primary');
         closedBtn.classList.remove('btn-outline');
 
@@ -167,15 +179,53 @@ document.getElementById('all_btns').addEventListener('click', (event) => {
 
         openBtn.classList.remove('btn-primary');
         openBtn.classList.add('btn-outline');
-    }
 
+        loadClosedStatus();
+        return;
+    }
 })
 
 
 
+const loadClosedStatus = () => fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+    .then((res) => res.json())
+    .then((issues) => closedStatus(issues.data));
 
 
-loadAllIssues();
+
+const closedStatus = (allData) => {
+    // console.log(allData);
+    const closedStatus = allData.filter((obj) => {
+        // console.log(obj);
+        // console.log(obj.status);
+        return obj.status === "closed";
+    })
+
+    // console.log(closedStatus);
+
+    displayAllIssues(closedStatus);;
+}
+
+
+
+const loadOpenStatus = () => fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+    .then((res) => res.json())
+    .then((issues) => openStatus(issues.data));
+
+
+
+const openStatus = (allData) => {
+    // console.log(allData);
+    const openStatus = allData.filter((obj) => {
+        // console.log(obj);
+        // console.log(obj.status);
+        return obj.status === "open";
+    })
+
+    // console.log(closedStatus);
+
+    displayAllIssues(openStatus);;
+}
 
 
 
