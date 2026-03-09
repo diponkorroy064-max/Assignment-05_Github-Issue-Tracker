@@ -39,7 +39,8 @@
 <body class="bg-gray-200">
 
     <!-- header section -->
-    <header class="flex justify-between items-center py-5 border border-[#E9E9E9] bg-[#FFFFFF] px-10 shadow flex-wrap gap-4">
+    <header
+        class="flex justify-between items-center py-5 border border-[#E9E9E9] bg-[#FFFFFF] px-10 shadow flex-wrap gap-4">
         <div>
             <span><i class="fa-brands fa-github text-2xl"></i></span>
             <span class="text-[#1F2937] font-bold text-2xl">GitHub Issues Tracker</span>
@@ -55,10 +56,10 @@
                     </g>
                 </svg>
 
-                <input id="header_input" type="search" required placeholder="Search issues..." />
+                <input id="header_input" type="search" value="" required placeholder="Search issues..." />
             </label>
 
-            <button id="header_btn" class="btn btn-primary">+ New Issue</button>
+            <button id="header_btn" type="" class="btn btn-primary">+ New Issue</button>
         </div>
     </header>
 
@@ -67,19 +68,19 @@
     <main class="pb-[60px]">
 
         <!--Tab button section -->
-        <section id="all_btns" class="w-[90vw] mx-auto bg-[#FFFFFF] border border-gray-200 rounded-md p-6 shadow mt-[60px] flex gap-8">
-            <button id="all_btn" class="btn btn-outline all-btns">All</button>
+        <section id="all_btns"
+            class="w-[90vw] mx-auto bg-[#FFFFFF] border border-gray-200 rounded-md p-6 shadow mt-[60px] flex gap-8">
+            <button id="all_btn" class="btn btn-primary all-btns">All</button>
 
             <button id="open_btn" class="btn btn-outline open-btns">Open</button>
 
             <button id="closed_btn" class="btn btn-outline closed-btns">Closed</button>
-            
+
         </section>
 
 
         <!-- issue (Tab) section -->
-        <section id=""
-            class="w-[90vw] mx-auto bg-[#FFFFFF] border border-gray-200 rounded-md p-6 shadow mt-8">
+        <section id="" class="w-[90vw] mx-auto bg-[#FFFFFF] border border-gray-200 rounded-md p-6 shadow mt-8">
 
             <div class="flex justify-between items-center flex-wrap gap-6">
                 <div class="flex items-center gap-2">
@@ -88,7 +89,8 @@
                     </div>
 
                     <div>
-                        <h2 class="text-[20px] text-[#1F2937] font-semibold"><span id="count_cards">50</span> Issues</h2>
+                        <h2 class="text-[20px] text-[#1F2937] font-semibold"><span id="count_cards">50</span> Issues
+                        </h2>
                         <p class="text-[#64748B] text-[16px]">Track and manage your project issues</p>
                     </div>
                 </div>
@@ -104,8 +106,15 @@
 
 
         <!-- all cards showing section -->
-        <section id="card_container" class="bg-[#FBFBFB] rounded-md w-[90vw] mt-2 mx-auto grid md:grid-cols-4 grid-cols-1 gap-5 p-5">
+        <!-- spiner loading section -->
+        <section class="bg-[#FBFBFB] shadow rounded-md w-[90vw] mt-2 mx-auto">
+            <section id="spiner-section" class="hidden justify-center items-center py-4">
+                <span class="loading loading-spinner text-primary"></span>
+            </section>
 
+            <section id="card_container" class="grid md:grid-cols-4 grid-cols-1 gap-5 p-5">
+
+            </section>
         </section>
 
 
@@ -114,7 +123,7 @@
         <dialog id="my_modal" class="modal modal-middle">
             <div class="modal-box">
                 <div id="modal_container" class="space-y-2">
-                    
+
                 </div>
 
                 <div class="modal-action">
@@ -128,9 +137,7 @@
 
     </main>
 
-<script src="home.js"></script>
+    <script src="home.js"></script>
 </body>
 
 </html>
-
-
