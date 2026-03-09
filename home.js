@@ -253,7 +253,7 @@ loadAllIssues();
 document.getElementById('header_btn').addEventListener('click', () => {
     const input = document.getElementById('header_input');
     const searchValue = input.value.trim().toLowerCase();
-    console.log(searchValue);
+    // console.log(searchValue);
 
     allBtn.classList.remove('btn-primary');
     allBtn.classList.add('btn-outline');
@@ -270,12 +270,9 @@ document.getElementById('header_btn').addEventListener('click', () => {
             // manageSpiner(true);
 
             const allSearch = searchDetails.data;
-            console.log(allSearch);
+            // console.log(allSearch);
 
-            const filterWord = allSearch.filter((obj) => obj.description.toLowerCase().includes(searchValue));
-            // console.log(filterWord);
-
-            displayAllIssues(filterWord);
+            displayAllIssues(allSearch);
         });
 });
 
