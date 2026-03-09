@@ -67,8 +67,6 @@ const displayAllIssues = (allData) => {
 }
 
 
-loadAllIssues();
-
 
 // load all modal issues----
 const loadModal = async (issueId) => {
@@ -229,5 +227,27 @@ const openStatus = (allData) => {
 
 
 
+loadAllIssues();
+
+
+
+
+document.getElementById('header_btn').addEventListener('click', () => {
+    const input = document.getElementById('header_input');
+    const searchValue = input.value.trim().toLowerCase();
+    console.log(searchValue);
+
+    fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+        .then((res) => res.json())
+        .then((searchDetails) => {
+            const allSearch = searchDetails.data;
+            console.log(allSearch);
+            
+            const filterWord = allSearch.filter((obj) => obj.description.toLowerCase().includes(searchValue));
+            console.log(filterWord);
+
+            displayAllIssues(filterWord);
+        });
+});
 
 
