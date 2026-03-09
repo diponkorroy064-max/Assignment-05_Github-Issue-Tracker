@@ -253,7 +253,7 @@ loadAllIssues();
 document.getElementById('header_btn').addEventListener('click', () => {
     const input = document.getElementById('header_input');
     const searchValue = input.value.trim().toLowerCase();
-    // console.log(searchValue);
+    console.log(searchValue);
 
     allBtn.classList.remove('btn-primary');
     allBtn.classList.add('btn-outline');
@@ -264,13 +264,13 @@ document.getElementById('header_btn').addEventListener('click', () => {
     closedBtn.classList.remove('btn-primary');
     closedBtn.classList.add('btn-outline');
 
-    fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
         .then((res) => res.json())
         .then((searchDetails) => {
-            manageSpiner(true);
+            // manageSpiner(true);
 
             const allSearch = searchDetails.data;
-            // console.log(allSearch);
+            console.log(allSearch);
 
             const filterWord = allSearch.filter((obj) => obj.description.toLowerCase().includes(searchValue));
             // console.log(filterWord);
@@ -278,7 +278,6 @@ document.getElementById('header_btn').addEventListener('click', () => {
             displayAllIssues(filterWord);
         });
 });
-
 
 
 
