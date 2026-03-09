@@ -129,11 +129,11 @@ document.getElementById('all_btns').addEventListener('click', (event) => {
     const openBtn = document.getElementById('open_btn');
     const closedBtn = document.getElementById('closed_btn');
 
-    const count = document.getElementById('count_cards');
-
     if (event.target.classList.contains('all-btns')) {
         // count.innerText = "";
-        count.innerText = cardContainer.children.length;
+        // count.innerText = cardContainer.children.length;
+
+        tabCounting();
 
         allBtn.classList.add('btn-primary');
         allBtn.classList.remove('btn-outline');
@@ -148,8 +148,8 @@ document.getElementById('all_btns').addEventListener('click', (event) => {
         return;
     }
     else if (event.target.classList.contains('open-btns')) {
-        // count.innerText = "";
-        count.innerText = cardContainer.children.length;
+
+        tabCounting();
 
         openBtn.classList.add('btn-primary');
         openBtn.classList.remove('btn-outline');
@@ -167,7 +167,9 @@ document.getElementById('all_btns').addEventListener('click', (event) => {
     }
     else if (event.target.classList.contains('closed-btns')) {
         // count.innerText = "";
-        count.innerText = cardContainer.children.length;
+        // count.innerText = cardContainer.children.length;
+
+        tabCounting();
 
         closedBtn.classList.add('btn-primary');
         closedBtn.classList.remove('btn-outline');
@@ -182,6 +184,17 @@ document.getElementById('all_btns').addEventListener('click', (event) => {
         return;
     }
 })
+
+
+
+function tabCounting() {
+    const count = document.getElementById('count_cards');
+    const len = cardContainer.children.length;
+    count.innerText = len;
+    return len;
+}
+// console.log(tabCounting());
+// tabCounting();
 
 
 
@@ -242,11 +255,13 @@ document.getElementById('header_btn').addEventListener('click', () => {
         .then((searchDetails) => {
             const allSearch = searchDetails.data;
             console.log(allSearch);
-            
+
             const filterWord = allSearch.filter((obj) => obj.description.toLowerCase().includes(searchValue));
             console.log(filterWord);
 
             displayAllIssues(filterWord);
+
+            tabCounting();
         });
 });
 
