@@ -13,7 +13,7 @@ document.getElementById('login-btn').addEventListener('click',()=>{
 
     // match usename and passward
     if (username == "admin" && passward == "admin123") {
-        alert('passward successful');
+        alert('Login successful');
         window.location.assign('home.html');
     }
     else {
