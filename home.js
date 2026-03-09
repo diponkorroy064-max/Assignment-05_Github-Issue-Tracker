@@ -23,6 +23,8 @@ const manageSpiner = (status) => {
         cardContainer.classList.add('grid');
     }
 };
+manageSpiner(true);
+
 
 
 // loading all card documents---
@@ -83,8 +85,8 @@ const displayAllIssues = (allData) => {
             </div>
 
             <div class="border-t-2 border-gray-200 pt-2.5 space-y-2">
-                <p># ${data.id} by ${data.author}</p>
-                <p>${new Date(data.createdAt).toLocaleDateString("en-US")}</p>
+                <p class="text-[14px]"># ${data.id} by ${data.author}</p>
+                <p class="text-[14px]">${new Date(data.createdAt).toLocaleDateString("en-US")}</p>
             </div>
         `;
         cardContainer.appendChild(card);
@@ -125,8 +127,8 @@ const displayModal = (issue) => {
     modalContainer.innerHTML = `
         <h2 class="font-bold text-[20px]">${issue.title}</h2>
         <div class="flex gap-6">
-            <span class="badge badge-success">${issue.status}</span>
-            <span>${issue.author}</span>
+            <span class="badge badge-success text-white">${issue.status}</span>
+            <span>Opened by ${issue.author}</span>
             <span>${new Date(issue.updatedAt).toLocaleDateString("en-US")}</span>
         </div>
             
@@ -136,13 +138,13 @@ const displayModal = (issue) => {
 
         <div class="flex justify-start gap-12 bg-[#F8FAFC] rounded-md p-2.5 shadow">
             <div>
-                <h3 class="font-semibold">Assignee:</h3>
+                <h3 class="font-semibold">Assignee :</h3>
                 <p>${issue.author}</p>
             </div>
                 
             <div>
-                <h3 class="font-semibold">Priority:</h3>
-                <p>${issue.priority}</p>
+                <h3 class="font-semibold">Priority :</h3>
+                <p class="badge badge-outline badge-secondary">${issue.priority}</p>
             </div>
         </div>
     `;
@@ -225,7 +227,7 @@ const closedStatus = (allData) => {
     // console.log(closedStatus);
 
     displayAllIssues(closedStatus);;
-}
+};
 
 
 const loadOpenStatus = () => fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
@@ -242,7 +244,7 @@ const openStatus = (allData) => {
     })
     // console.log(closedStatus);
 
-    displayAllIssues(openStatus);;
+    displayAllIssues(openStatus);
 }
 
 loadAllIssues();
